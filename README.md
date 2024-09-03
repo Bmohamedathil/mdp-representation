@@ -8,7 +8,13 @@
 
 ## AIM:
 
-To represent any one real-world problem in MDP form.
+To represent a Markov Decision Process(MDP) problem in the following ways.
+
+1.Text representation
+
+2.Graphical representation
+
+3.Python - Dictonary representation
 
 ## PROBLEM STATEMENT:
 
@@ -62,19 +68,19 @@ Call Foul
 mdp = {
     0: {  # Initial state with no score and no foul
         1: [(0.8, 2, 1.0, False)],  # Higher chance of scoring with a foul
-        0: [(1.0, 1, 0.0, False)]  # Guaranteed transition to state 1
+        0: [(0.2, 1, 0.0, False)]  # Adjusted probability for no foul
     },
     1: {  # Score increased, no foul called
         1: [(1.0, 3, 1.0, True)],  # Moves to terminal state with foul
-        0: [(1.0, 1, 0.0, False)]  # Stays in the same state
+        0: [(0.0, 1, 0.0, False)]  # No probability to stay in the same state
     },
     2: {  # Score increased with a foul
         1: [(1.0, 3, 1.0, True)],  # Guaranteed transition to terminal state
-        0: [(1.0, 2, 0.0, False)]  # Stays in the same state
+        0: [(0.0, 2, 0.0, False)]  # No probability to stay in the same state
     },
     3: {  # Terminal state
         1: [(1.0, 3, 1.0, True)],
-        0: [(1.0, 3, 0.0, True)]
+        0: [(1.0, 3, 0.0, True)]  # Remains in the terminal state
     }
 }
 
