@@ -66,21 +66,21 @@ Call Foul
 ```py
 
 mdp = {
-    0: {  # Initial state with no score and no foul
-        1: [(0.8, 2, 1.0, False)],  # Higher chance of scoring with a foul
-        0: [(0.2, 1, 0.0, False)]  # Adjusted probability for no foul
+    0: {  # Score 0, Fouls 0
+        0: [(0.8, 1, 0.0, False)],  # Provide Score
+        1: [(0.2, 0, 0.0, False)],  # Call Foul
     },
-    1: {  # Score increased, no foul called
-        1: [(1.0, 3, 1.0, True)],  # Moves to terminal state with foul
-        0: [(0.0, 1, 0.0, False)]  # No probability to stay in the same state
+    1: {  # Score 1, Fouls 0
+        0: [(0.9, 1, 0.0, False)],  # Provide Score
+        1: [(0.1, 2, 0.0, False)],  # Call Foul
     },
-    2: {  # Score increased with a foul
-        1: [(1.0, 3, 1.0, True)],  # Guaranteed transition to terminal state
-        0: [(0.0, 2, 0.0, False)]  # No probability to stay in the same state
+    2: {  # Score 1, Fouls 1
+        0: [(0.7, 2, 0.0, False)],  # Provide Score
+        1: [(0.3, 3, 0.0, False)],  # Call Foul
     },
-    3: {  # Terminal state
-        1: [(1.0, 3, 1.0, True)],
-        0: [(1.0, 3, 0.0, True)]  # Remains in the terminal state
+    3: {  # Terminal state (Score 2 or more)
+        0: [(1.0, 3, 1.0, True)],  # Terminal state
+        1: [(0.0, 3, 0.0, True)],  # No further action
     }
 }
 
