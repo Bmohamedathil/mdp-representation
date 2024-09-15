@@ -56,33 +56,36 @@ Call Foul
 
 ### Graphical Representation
 
-
-![rl mod](https://github.com/user-attachments/assets/57012a7c-66c9-4426-b24c-6a030e070035)
-
-
+![rl mod](https://github.com/user-attachments/assets/3b93acb7-dc35-4477-8d9e-1c035afa9afe)
 
 
 ## PYTHON REPRESENTATION:
 ```py
 
-mdp = {
-    0: {  # Score 0, Fouls 0
-        0: [(0.8, 1, 0.0, False)],  # Provide Score
-        1: [(0.2, 0, 0.0, False)],  # Call Foul
+
+umpire_mdp = {
+    0: {  # State: 0 (Score 0, Fouls 0)
+        0: [(0.8, 1, 1.0, False), (0.2, 0, 0.0, True)],  # Provide score
+        1: [(0.7, 2, -1.0, False), (0.3, 0, 0.0, True)]  # Call foul
     },
-    1: {  # Score 1, Fouls 0
-        0: [(0.9, 1, 0.0, False)],  # Provide Score
-        1: [(0.1, 2, 0.0, False)],  # Call Foul
+    1: {  # State: 1 (Score 1, Fouls 0)
+        0: [(0.9, 1, 1.0, False), (0.1, 3, 2.0, True)],  # Provide score
+        1: [(0.6, 2, -1.0, False), (0.4, 1, 0.0, True)]  # Call foul
     },
-    2: {  # Score 1, Fouls 1
-        0: [(0.7, 2, 0.0, False)],  # Provide Score
-        1: [(0.3, 3, 0.0, False)],  # Call Foul
+    2: {  # State: 2 (Score 0, Fouls 1)
+        0: [(0.5, 2, 0.0, False), (0.5, 3, 1.0, True)],  # Provide score
+        1: [(0.8, 4, -2.0, False), (0.2, 2, 0.0, True)]  # Call foul
     },
-    3: {  # Terminal state (Score 2 or more)
-        0: [(1.0, 3, 1.0, True)],  # Terminal state
-        1: [(0.0, 3, 0.0, True)],  # No further action
+    3: {  # State: 3 (Score 1, Fouls 1)
+        0: [(0.7, 3, 0.0, False), (0.3, 4, 2.0, True)],  # Provide score
+        1: [(0.5, 4, -2.0, False), (0.5, 3, 0.0, True)]  # Call foul
+    },
+    4: {  # State: 4 (Score 2, Fouls 0)
+        0: [(1.0, 4, 0.0, False)],  # Provide score
+        1: [(0.9, 5, -1.0, False), (0.1, 4, 0.0, True)]  # Call foul
     }
 }
+
 
 ```
 
