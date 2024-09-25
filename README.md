@@ -1,6 +1,6 @@
 ### Developed By : MOHAMED ATHIL B
 
-### Register No. 212222230081
+### Register No : 212222230081
 
 ### Date : 
 
@@ -62,7 +62,6 @@ Call Foul
 ## PYTHON REPRESENTATION:
 ```py
 
-
 umpire_mdp = {
     0: {  # State: 0 (Score 0, Fouls 0)
         0: [(0.8, 1, 1.0, False), (0.2, 0, 0.0, True)],  # Provide score
@@ -87,12 +86,12 @@ umpire_mdp = {
 }
 
 
+
 ```
 
+## OUTPUT :
 
-## OUTPUT:
-
-![image](https://github.com/user-attachments/assets/d26e9339-886c-457d-9d87-9d3c4c8a5779)
+![rl mod](https://github.com/user-attachments/assets/3cbc69fb-7c88-49ee-8050-05fb03de2b3a)
 
 
 ## RESULT:
